@@ -1,0 +1,365 @@
+/* globals */
+:root {
+  color-scheme: dark;
+  --primary-color: #4A90E2;
+  --secondary-color: #1E2A38;
+  --black-color: #0D0F12;
+  --white-color: #E3E6E9;
+  --neutral-950: #16181A;
+  --shadow: #E3E6E980;
+  --light-shadow: #0D0F1280;
+  --size: 0.21875rem;
+  --max-width: 1024px;
+  --transition-duration: 0.25s;
+  --primary-font: "Inter", sans-serif;
+  --primary-background: var(--black-color);
+  --secondary-background: var(--neutral-950);
+  --border-radius: calc(var(--size) * 3);
+
+  /*cards colors */
+  --color-card-html: orange;
+  --color-card-css: blue;
+  --color-card-js: gold;
+  --color-card-react: royalblue;
+  --color-card-git: rgb(240, 159, 93);
+
+  @media (width >=768px) {
+    --size: 0.25rem;
+  }
+}
+
+/* ANIMATIONS */
+.button--pulse {
+  animation: beat 2s infinite;
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(1);
+    box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--secondary-color);
+  }
+
+  50% {
+    transform: scale(1.0625);
+    box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--primary-color);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--secondary-color);
+  }
+}
+
+.body {
+  margin: 0;
+  font-family: var(--primary-font);
+}
+
+/* layout */
+.container {
+  max-width: var(--max-width);
+  padding-inline: calc(var(--size) * 4);
+  margin-inline: auto;
+}
+
+.flexbox {
+  display: flex;
+}
+
+.flexbox--centered-spaced {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.g-layout {
+  display: grid;
+  place-items: center;
+  place-content: center;
+}
+
+.g-layout--auto-fit-columns-lg {
+  grid-template-columns: repeat(auto-fit, minmax(calc(var(--size) * 80), 1fr));
+}
+
+/* components */
+.header {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 0 calc(var(--size) * 0.5) calc(var(--size) * 0.25) var(--shadow);
+  background-color: var(--light-shadow);
+  backdrop-filter: blur(calc(var(--size) * 0.5));
+}
+
+.main {
+
+  &>.hero,
+  &>.section {
+    &:nth-child(odd) {
+      background-image: conic-gradient(from 90deg at -25% 100%, var(--primary-color) 90deg, var(--primary-background));
+    }
+
+    &:nth-child(even) {
+      background-image: conic-gradient(from -90deg at 125% 100%, var(--secondary-background), var(--secondary-color) 90deg);
+    }
+  }
+}
+
+.nav {
+  padding-block: calc(var(--size) * 4);
+}
+
+.hero {
+  padding-block: calc(var(--size) * 32);
+  text-align: center;
+}
+
+.hero__title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) calc(var(--size) * 4) var(--primary-color);
+}
+
+.hero__paragraph {
+  margin: 0;
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+}
+
+.section {
+  padding-block: calc(var(--size) * 8);
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.card {
+  border-radius: calc(var(--border-radius) * 2);
+  box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition-duration), transform var(--transition-duration);
+
+  &:hover {
+    box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--white-color);
+    transform: scale(1.0625);
+  }
+}
+
+.card-html {
+  border-radius: calc(var(--border-radius) * 2);
+  box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition-duration), transform var(--transition-duration);
+
+  &:hover {
+    box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--color-card-html);
+    transform: scale(1.0625);
+  }
+}
+
+.card-css {
+  border-radius: calc(var(--border-radius) * 2);
+  box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition-duration), transform var(--transition-duration);
+
+  &:hover {
+    box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--color-card-css);
+    transform: scale(1.0625);
+  }
+}
+
+.card-js {
+  border-radius: calc(var(--border-radius) * 2);
+  box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition-duration), transform var(--transition-duration);
+
+  &:hover {
+    box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--color-card-js);
+    transform: scale(1.0625);
+  }
+}
+
+.card-react {
+  border-radius: calc(var(--border-radius) * 2);
+  box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition-duration), transform var(--transition-duration);
+
+  &:hover {
+    box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--color-card-react);
+    transform: scale(1.0625);
+  }
+}
+
+.card-git {
+  border-radius: calc(var(--border-radius) * 2);
+  box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition-duration), transform var(--transition-duration);
+
+  &:hover {
+    box-shadow: calc(var(--size) * 0.25) calc(var(--size) * 0.5) var(--size) calc(var(--size) * 0.25) var(--color-card-git);
+    transform: scale(1.0625);
+  }
+}
+
+.card--overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  max-width: calc(var(--size) * 106.5);
+  height: calc(var(--size) * 60);
+  text-decoration: none;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size);
+  padding: calc(var(--size) * 4);
+}
+
+.form {
+  max-width: 512px;
+}
+
+.form__input {
+  padding: 0.5em 1em;
+  font-family: var(--primary-font);
+  border-radius: var(--border-radius);
+}
+
+/* elements */
+.title {
+  margin: 0;
+  font-size: calc(var(--size) * 8);
+  font-weight: 800;
+}
+
+.title--sm {
+  font-size: calc(var(--size) * 7);
+}
+
+.title--xs {
+  font-size: calc(var(--size) * 6);
+  font-weight: 700;
+}
+
+.text {
+  margin: 0;
+  font-size: calc(var(--size) * 4);
+}
+
+.text--sm {
+  font-size: calc(var(--size) * 3.5);
+}
+
+.interactive {
+  font-size: calc(var(--size) * 3.5);
+  font-weight: 600;
+}
+
+.interactive--lg {
+  font-size: calc(var(--size) * 4);
+}
+
+.interactive--sm {
+  font-size: calc(var(--size) * 3);
+}
+
+.img {
+  display: block;
+  object-fit: cover;
+}
+
+.img--background {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  opacity: 0.5;
+}
+
+.link {
+  color: var(--white-color);
+  text-decoration: none;
+  transition: color var(--transition-duration);
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+.button {
+  padding: 0.5em 1em;
+  border: calc(var(--size) * 0.125) solid var(--primary-background);
+  border-radius: calc(var(--size) * 2);
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--primary-font);
+  transition: filter var(--transition-duration);
+
+  &:hover {
+    filter: opacity(0.875);
+  }
+}
+
+.button--primary {
+  background-color: var(--primary-color);
+  border: calc(var(--size) * 0.125) solid var(--primary-color);
+  color: var(--black-color);
+}
+
+.badge {
+  padding: 0.25em 0.5em;
+  border-radius: calc(var(--size) * 2);
+}
+
+.badge--primary {
+  background-color: var(--primary-color);
+  color: var(--black-color);
+}
+
+/* utils */
+.d-flex {
+  display: flex;
+}
+
+.f-direction-column {
+  flex-direction: column;
+}
+
+.a-items-center {
+  align-items: center;
+}
+
+.g-1 {
+  gap: var(--size);
+}
+
+.g-2 {
+  gap: calc(var(--size) * 2);
+}
+
+.g-4 {
+  gap: calc(var(--size) * 4);
+}
+
+.f-1 {
+  flex: 1;
+}
+
+.c-primary {
+  color: var(--primary-color);
+}
+
+.c-white {
+  color: var(--white-color);
+}
